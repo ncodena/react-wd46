@@ -45,4 +45,48 @@
   color: #888;
 }
 
+.meme-container {
+  position: relative;
+  display: inline-block;
+  width: 40%;
+
+}
+.inputs-buttons-container {
+  gap: 1em;
+  display: flex;
+  justify-content: center;
+}
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2em;
+}
+
+.meme-image {
+  width: 100%;
+  height: auto;
+}
+
+.meme-text {
+  position: absolute;
+  font-family: "Impact", sans-serif;
+  font-size: 24px;
+  color: white;
+  text-shadow: 2px 2px 4px black;
+  text-align: center;
+  width: 100%;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.top-text {
+  top: 10px;
+}
+
+.bottom-text {
+  bottom: 10px;
+}
+
 
