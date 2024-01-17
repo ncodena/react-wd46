@@ -1,13 +1,13 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import MemeGenerator from './views/MemeGenerator';
+import Home from './views/Home';
 
 function App() {
   
   return (
     <>
     <Routes>
-      <Route path='/' element={<MemeGenerator/>} />
+      <Route path='/' element={<Home/>} />
     </Routes>
     </>
   )
