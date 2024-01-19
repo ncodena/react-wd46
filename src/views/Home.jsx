@@ -19,7 +19,11 @@ const Home = () => {
 
             return response.json()
           })
-          .then((data) => console.log(data))
+          .then((data) => setJokes(data))
+          .catch((error) => console.log(error))
+          .finally(() => {
+            setLoading(false)
+          })
         };
       
         fetchJokes();
