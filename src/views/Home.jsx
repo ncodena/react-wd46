@@ -19,7 +19,7 @@ const Home = () => {
 
             return response.json()
           })
-          .then((data) => setJokes(data))
+          .then((data) => setJokes(data.jokes))
           .catch((error) => console.log(error))
           .finally(() => {
             setLoading(false)
@@ -29,12 +29,27 @@ const Home = () => {
         fetchJokes();
       }, []);
 
- 
+      const renderJoke = (joke) => {
+        if (joke.type === 'twopart') {
+            return <p><b>{joke.setup}</b><br/>{joke.delivery}</p>;
+        } else {
+            return <p>{joke.joke}</p>;
+        }
+    };
 
   return (
     <div>
-        <h1>Jokes API</h1>
-    </div>
+    <h1>Jokes</h1>
+    {loading ? (
+        <p>Loading jokes...</p>
+    ) : (
+        <ul>
+        {jokes.length ? jokes.map((joke, index) => (
+            <div key={index}>{renderJoke(joke)}</div>
+        )) : null}
+        </ul>
+    )}
+</div>
   )
 }
 

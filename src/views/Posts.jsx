@@ -8,6 +8,9 @@ const [bodyValue, setBodyValue] = useState("");
 const [userIDValue, setUserIDValue] = useState("");
 
 const [isLoadingPosts, setIsLoadingPosts] = useState(true);
+// New state to control loading request when submitting POST REQUEST
+const [isSubmittingPost, setIsSubmittingPost] = useState(false);
+
 
 useEffect(() => {
         
@@ -40,6 +43,8 @@ useEffect(() => {
     }
 
     try{
+        // Set to true when POST request is fired
+        setIsSubmittingPost(true);
         const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
             method: 'POST',
             headers: {
@@ -48,12 +53,18 @@ useEffect(() => {
             body: JSON.stringify(dataToSend)
         });
 
-        console.log(response)
+        const data = await response.json();
+        setData(prevData => [...prevData, data])
 
     } catch(error){
-
+        alert(`Error: ${error}`);
     } finally{
+      // Loading set to false when POST request is either resolved or rejected and cleaning input values so the form gets empty and ready to be filled again
 
+      setIsSubmittingPost(false);
+      setTitleValue("")
+      setBodyValue("");
+      setUserIDValue("");
     }
 
   }
@@ -105,8 +116,9 @@ useEffect(() => {
               required
             ></input>
             <br />
-            <button value="submit">
-                Submit
+            {/* Disable button to prevent multiple submits when the request is being processed and also changing button content text */}
+            <button value="submit" disabled={isSubmittingPost}>
+              {isSubmittingPost ? 'Submitting...' : 'Submit'}
             </button>
         </form>
     </div>
