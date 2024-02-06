@@ -11,8 +11,6 @@ const Todo = () => {
     const navigate = useNavigate();
     const {id} = useParams();
 
-    console.log(id, 'urlId')
-
     const fetchTodos = async () => {
         try {
           const response = await axios.get(`https://jsonplaceholder.typicode.com/todos/${id}`);
