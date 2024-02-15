@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ListElement = ({todo}) => {
+const ListElement = ({country}) => {
 
   return (
-    <div>{todo.title}</div>
+    <div>{country.name}</div>
   )
 }
 

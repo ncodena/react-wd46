@@ -1,27 +1,31 @@
 import './App.css';
-import Todo from './views/Todo';
-import Todos from './views/Todos';
-import { Routes, Route } from 'react-router-dom';
-import Home from './views/Home';
-import About from './views/About';
-import Navbar from './components/Navbar';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { privateRoutes, publicRoutes } from './routes/routes';
+import { useAuth } from './context/AuthContext';
+import Navbar from "./components/Navbar";
+import NotFound from "./views/NotFound";
 
 function App() {
-  
+  const {token} = useAuth();
 
   return (
     <>
-    <Routes>
-      
+      <Navbar/>
+      <Routes>
+        {publicRoutes.map(({path, element}) => (
+          <Route key={path} path={path} element={!token ? element : <Navigate to="/" />}/>
+        ))}
 
-      <Route path='/' element={<Home/>} />
-      <Route path='/about' element={<About/>} />
+        {privateRoutes.map(({path, element}) => (
+          <Route key={path} path={path} element={token ? element : <Navigate to="/login" />}/>
+        ))}
 
-      <Route path="todos" element={<Navbar />}>
-        <Route index element={<Todos/>}/>
-        <Route path=':id' element={<Todo/>}/>
-      </Route>
-    </Routes>
+        {/* Explicit route for the NotFound page */}
+        <Route path="/not-found" element={<NotFound/>}/>
+        {/* Catch-all routes for 404 Found page */}
+        <Route path="*" element={<Navigate to="/not-found" replace/>}/>
+        
+      </Routes>
     </>
   )
 }

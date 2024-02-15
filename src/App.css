@@ -3,7 +3,7 @@
 }
 
 #root {
-  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -44,5 +44,50 @@
 .read-the-docs {
   color: #888;
 }
+
+.countryContainer{
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.buttonContainer{
+  display: flex;
+  justify-content: end;
+}
+
+.usersContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2em;
+  margin: 2em 0em;
+}
+
+.userContainer{
+  border: 1px solid white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  margin: 2em 0;
+
+  input, select{
+    width: 50%;
+    height: 2em;
+  }
+
+  button{
+    width: 50%;
+  }
+}
+
+p{
+  margin: 0;
+}
+
 
 
