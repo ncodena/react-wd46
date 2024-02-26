@@ -6,6 +6,7 @@ import Users from '../views/Users';
 import NewUser from '../views/NewUser';
 import NewCountry from '../views/NewCountry';
 import Login from '../views/Login';
+import Films from '../views/Films';
 
 // Public routes are accessible without authentication
 export const publicRoutes = [
@@ -21,4 +22,5 @@ export const privateRoutes = [
   { path: '/countries/new_country', element: <NewCountry /> },
   { path: '/users', element: <Users /> },
   { path: '/users/new_user', element: <NewUser /> },
+  { path: '/films', element: <Films /> },
 ];
