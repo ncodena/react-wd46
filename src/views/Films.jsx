@@ -76,8 +76,8 @@ const Films = () => {
           {loading ? <div>loading</div> : films.length ? films.map((film) => (
         <div key={film._id}>
           <h2>{film.name}</h2>
-          {/* Conditionally checking if the film.img property exists. If it does, we create an img element with its src attribute set to the base64 string of the image, making sure to prepend it with data:image/jpeg;base64, to indicate to the browser that the source is a base64-encoded JPEG image */}
-          {film.img ? <img src={`data:image/jpeg;base64,${film.img}`} alt={film.name} width={200}/> : <div>No image</div>}
+          {/* we simply return img property containing cloudinary url which contains our uploades image stored */}
+          {film.img ? <img src={film.img} alt={film.name} width={200}/> : <div>No image</div>}
           <p>{film.genre}</p>
           <p>{film.year}</p>
         </div>
